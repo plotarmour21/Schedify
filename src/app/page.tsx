@@ -1,15 +1,21 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"; // Ensure this imports ShadCN Button
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
+
 export default function Home() {
   const { userId } = auth();
   if (userId != null) redirect("/events");
   return (
-    <div className=" text-2xl container text-center my-4 mx-auto">
-      <h2 className="text-3xl mb-4">Fancy</h2>
+    <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen flex flex-col items-center justify-center">
+      <h2 className="text-4xl font-bold text-white mb-6 shadow-sm">
+        Welcome to Schedify
+      </h2>
+      <p className="text-lg text-black/40 mb-4 text-muted-foreground" >
+        This app is currently in development and is designed to help you schedule meetings by integrating with Google Calendar.
+      </p>
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-4">
         <Button asChild>
           <SignInButton />
         </Button>
